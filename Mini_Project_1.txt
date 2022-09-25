@@ -1,1 +1,5 @@
 
+hive> create table tmp(a string, b string) row format delimited fields terminated by ',';
+hive> load data local inpath 'a.txt' overwrite into table tmp;
+hive> create table mytime(a string, b timestamp);
+hive> insert into table mytime select a, from_unixtime(unix_timestamp(b, 'dd-MM-yyyy HH:mm')) from tmp;
