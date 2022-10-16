@@ -52,3 +52,9 @@ select Agent_Name, sum(Total_Chats) Total_Query from agentperformance group by A
 select Agent_Name, sum(cast(Total_Feedback as int) Total_Feedback from agentperformance group by Agent_Name;
 
 
+# Agent name who have average rating between 3.5 to 4
+
+select Agent_Name from agentperformance where cast(Avg_Rating as int) between 3.5 and 4 group by Agent_Name;
+
+
+# 
