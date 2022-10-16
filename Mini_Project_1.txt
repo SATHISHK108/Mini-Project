@@ -17,3 +17,12 @@ Duration timestamp
 )
 row format delimited,
 fields terminated by ',';
+
+
+# Create Hive table
+
+# List of all agents' names.
+
+select distinct Agent from agentlogingreport;
+
+
