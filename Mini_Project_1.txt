@@ -21,8 +21,26 @@ fields terminated by ',';
 
 # Create Hive table
 
+
+# Display column name
+
+set hive.cli.print.header = true;
+
+
 # List of all agents' names.
 
 select distinct Agent from agentlogingreport;
+
+
+# Average rating of all agents
+
+select Agent_Name, avg(cast(Avg_Rating as decimal)) from agentperformance group by Agent_Name;
+
+
+# Total working days for each agents 
+
+select Agent, count(distinct Date) Total_working_days from agentlogingreport group by Agent;
+
+
 
 
