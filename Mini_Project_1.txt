@@ -42,5 +42,9 @@ select Agent_Name, avg(cast(Avg_Rating as decimal)) from agentperformance group 
 select Agent, count(distinct Date) Total_working_days from agentlogingreport group by Agent;
 
 
+# Total query that each agent have taken
+
+select Agent_Name, count(Total_Chats) Total_Query from agentperformance group by Agent_Name;
+
 
 
