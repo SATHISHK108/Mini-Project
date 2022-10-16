@@ -44,7 +44,11 @@ select Agent, count(distinct Date) Total_working_days from agentlogingreport gro
 
 # Total query that each agent have taken
 
-select Agent_Name, count(Total_Chats) Total_Query from agentperformance group by Agent_Name;
+select Agent_Name, sum(Total_Chats) Total_Query from agentperformance group by Agent_Name;
 
+
+# Total Feedback that each agent have received 
+
+select Agent_Name, sum(cast(Total_Feedback as int) Total_Feedback from agentperformance group by Agent_Name;
 
 
