@@ -54,7 +54,22 @@ select Agent_Name, sum(cast(Total_Feedback as int) Total_Feedback from agentperf
 
 # Agent name who have average rating between 3.5 to 4
 
-select Agent_Name from agentperformance where cast(Avg_Rating as int) between 3.5 and 4 group by Agent_Name;
+select Agent_Name, Avg_Rating from agentperformance where cast(Avg_Rating as int) between 3.5 and 4;
 
 
-# 
+# Agent name who have rating less than 3.5
+
+select Agent_Name, Avg_Rating from agentperformance where cast(Avg_Rating as int) < 3.5;
+
+
+# Agent name who have rating more than 4.5
+
+select Agent_Name, Avg_Rating from agentperformance where cast(Avg_Rating as int) > 4.5;
+
+# How many feedback agents have received more than 4.5 average
+
+select Agent_name,avg(cast(Total_Feedback as int)) from agentperformance having avg(cast(Total_Feedback as int)) > 4.5;
+
+# average weekly response time for each agent.
+
+select s.agent_name,avg(col1[0]*3600+col1[1]*60+substr(col1[2],1,2))/3600  from(select agent_name,split(avg_resp_time,':') as col1  from agentperformance )s group by s.agent_name;
